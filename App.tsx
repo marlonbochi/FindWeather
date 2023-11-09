@@ -10,19 +10,22 @@ import {
 import Welcome from "./src/screens/Welcome";
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+	const [fontsLoaded] = useFonts({
+		Overpass_300Light,
+		Overpass_400Regular,
+		Overpass_600SemiBold,
+		Overpass_700Bold,
+	  });
+	
+	  if (!fontsLoaded) {
+		return;
+	  }
+	
+	  return (
+		<>
+		  <StatusBar style="light" />
+	
+		  <Welcome />
+		</>
+	  );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
